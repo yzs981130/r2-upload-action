@@ -34,8 +34,8 @@ const S3 = new S3Client({
 const getFileList = (dir: string) => {
     let files: string[] = [];
 
-    if (fs.lstatSync(dir).isFile()) {
-        files.push(path.resolve(dir));
+    if (fs.statSync(dir).isFile()) {
+        files.push(path.realpathSync(dir));
         return files;
     }
 
