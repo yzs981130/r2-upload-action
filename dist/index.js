@@ -40134,8 +40134,8 @@ const S3 = new _aws_sdk_client_s3__WEBPACK_IMPORTED_MODULE_6__.S3Client({
 });
 const getFileList = (dir) => {
     let files = [];
-    if (fs__WEBPACK_IMPORTED_MODULE_2__.lstatSync(dir).isFile()) {
-        files.push(path__WEBPACK_IMPORTED_MODULE_5___default().resolve(dir));
+    if (fs__WEBPACK_IMPORTED_MODULE_2__.statSync(dir).isFile()) {
+        files.push(fs__WEBPACK_IMPORTED_MODULE_2__.realpathSync(dir));
         return files;
     }
     const items = fs__WEBPACK_IMPORTED_MODULE_2__.readdirSync(dir, {
