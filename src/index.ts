@@ -33,6 +33,12 @@ const S3 = new S3Client({
 
 const getFileList = (dir: string) => {
     let files: string[] = [];
+
+    if (fs.lstatSync(dir).isFile()) {
+        files.push(path.resolve(dir));
+        return files;
+    }
+
     const items = fs.readdirSync(dir, {
         withFileTypes: true,
     });

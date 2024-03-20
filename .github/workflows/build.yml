@@ -5,15 +5,16 @@ on:
     branches:
       - master
 
+permissions:
+  contents: write
+
 jobs:
   build:
     name: Build and Update Mappings
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.PAT }}
+        uses: actions/checkout@v4
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
@@ -29,6 +30,3 @@ jobs:
         with:
           commit_message: '[skip ci] Update mappings'
           file_pattern: 'dist/*.js dist/*.js.map dist/*.cjs'
-          commit_user_name: r2-action-bot[bot]
-          commit_user_email: 118486773+r2-action-bot[bot]@users.noreply.github.com
-          commit_author: r2-action-bot[bot] <118486773+r2-action-bot[bot]@users.noreply.github.com>
