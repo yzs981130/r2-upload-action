@@ -40163,7 +40163,8 @@ const run = async (config) => {
         console.log(config.sourceDir);
         console.log(config.destinationDir);
         //const fileName = file.replace(/^.*[\\\/]/, "");
-        const fileName = file.replace(config.sourceDir, "");
+        // fileName should be relative path of the file
+        const fileName = path__WEBPACK_IMPORTED_MODULE_5___default().basename(file);
         const fileKey = path__WEBPACK_IMPORTED_MODULE_5___default().join(config.destinationDir !== "" ? config.destinationDir : config.sourceDir, fileName);
         if (fileKey.includes('.gitkeep'))
             continue;
