@@ -35,7 +35,7 @@ const getFileList = (dir: string) => {
     let files: string[] = [];
 
     if (fs.statSync(dir).isFile()) {
-        files.push(path.realpathSync(dir));
+        files.push(fs.realpathSync(dir));
         return files;
     }
 
